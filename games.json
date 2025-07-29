@@ -1,0 +1,14 @@
+[
+  {
+    "name": "God of War",
+    "description": "لعبة أكشن ومغامرات",
+    "size": "1.3GB",
+    "download": "https://www.mediafire.com/file/example/god_of_war.iso/file"
+  },
+  {
+    "name": "Naruto Shippuden",
+    "description": "لعبة قتال ناروتو",
+    "size": "900MB",
+    "download": "https://www.mediafire.com/file/example/naruto.iso/file"
+  }
+]
