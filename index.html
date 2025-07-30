@@ -30,7 +30,7 @@
 
     .cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
       gap: 20px;
       flex-grow: 1;
     }
@@ -43,6 +43,7 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
       position: relative;
+      text-align: center;
     }
 
     .card::after {
@@ -70,21 +71,37 @@
     }
 
     .title {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-weight: bold;
-      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .description {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      color: #b2f2b2;
+    }
+
+    .size {
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      color: #8fbc8f;
     }
 
     a.download {
-      display: block;
-      text-align: center;
-      margin-top: 10px;
+      display: inline-block;
       color: #afffaf;
       text-decoration: none;
+      padding: 8px 15px;
+      border: 1px solid #0f0;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     a.download:hover {
-      text-decoration: underline;
+      background-color: #0f0;
+      color: #041f04;
+      text-decoration: none;
     }
 
     footer {
@@ -117,6 +134,8 @@
           div.className = "card";
           div.innerHTML = `
             <div class="title">${card.title}</div>
+            <div class="description">${card.description || "لا يوجد وصف"}</div>
+            <div class="size">${card.size || "الحجم غير معروف"}</div>
             <a class="download" href="${card.download}" target="_blank">Download</a>
           `;
           container.appendChild(div);
