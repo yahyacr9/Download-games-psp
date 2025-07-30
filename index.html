@@ -16,6 +16,9 @@
       background: radial-gradient(circle at top, #0f3d0f, #041f04);
       color: #fff;
       padding: 20px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
     h1 {
@@ -29,6 +32,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 20px;
+      flex-grow: 1;
     }
 
     .card {
@@ -82,11 +86,22 @@
     a.download:hover {
       text-decoration: underline;
     }
+
+    footer {
+      text-align: center;
+      color: #fff;
+      font-weight: bold;
+      margin-top: 20px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
   <h1>Download games psp</h1>
   <div class="cards-container" id="cardsContainer"></div>
+
+  <footer>YAHYA GAMING PRO</footer>
 
   <script>
     async function loadCards() {
@@ -108,6 +123,7 @@
         });
       } catch (error) {
         console.error("Error loading cards:", error);
+        document.getElementById("cardsContainer").innerHTML = '<p style="text-align:center;">فشل تحميل البطاقات.</p>';
       }
     }
 
