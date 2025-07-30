@@ -30,7 +30,7 @@
 
     .cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       gap: 20px;
       flex-grow: 1;
     }
@@ -43,7 +43,10 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
       position: relative;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 140px;
     }
 
     .card::after {
@@ -71,42 +74,49 @@
     }
 
     .title {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: bold;
-      margin-bottom: 8px;
+      text-align: center;
+      margin-bottom: 10px;
     }
 
     .description {
-      font-size: 0.95rem;
-      margin-bottom: 6px;
-      color: #b2f2b2;
+      font-size: 0.9rem;
+      color: #b2ffb2;
+      margin-bottom: 8px;
+      min-height: 40px;
+      text-align: center;
     }
 
     .size {
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-      color: #8fbc8f;
+      font-size: 0.8rem;
+      color: #88cc88;
+      margin-bottom: 10px;
+      text-align: center;
     }
 
     a.download {
-      display: inline-block;
+      display: block;
+      text-align: center;
+      margin-top: auto;
       color: #afffaf;
       text-decoration: none;
-      padding: 8px 15px;
-      border: 1px solid #0f0;
-      border-radius: 8px;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      font-weight: bold;
+      padding: 8px 0;
+      border-radius: 6px;
+      background-color: #0f3d0f;
+      box-shadow: 0 0 5px #0f0;
+      transition: background-color 0.3s ease;
     }
 
     a.download:hover {
-      background-color: #0f0;
-      color: #041f04;
-      text-decoration: none;
+      background-color: #0a220a;
+      text-decoration: underline;
     }
 
     footer {
       text-align: center;
-      color: #0f0;
+      color: #0f3d0f;
       font-weight: bold;
       margin-top: 20px;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -123,7 +133,7 @@
   <script>
     async function loadCards() {
       try {
-        const response = await fetch("games.json");
+        const response = await fetch("cards.json");
         const cards = await response.json();
 
         const container = document.getElementById("cardsContainer");
@@ -132,10 +142,12 @@
         cards.forEach(card => {
           const div = document.createElement("div");
           div.className = "card";
+          const description = card.description ? card.description : "الوصف غير متوفر";
+          const size = card.size ? card.size : "الحجم غير معروف";
           div.innerHTML = `
             <div class="title">${card.title}</div>
-            <div class="description">${card.description || "لا يوجد وصف"}</div>
-            <div class="size">${card.size || "الحجم غير معروف"}</div>
+            <div class="description">${description}</div>
+            <div class="size">الحجم: ${size}</div>
             <a class="download" href="${card.download}" target="_blank">Download</a>
           `;
           container.appendChild(div);
